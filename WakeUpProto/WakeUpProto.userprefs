@@ -1,6 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ActiveRuntime="Mono 2.10.5" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/ReadMe.txt">
+    <Files>
+      <File FileName="Assets/Scripts/AutoWayPoint.js" Line="1" Column="1" />
+      <File FileName="Assets/NGUI/ReadMe.txt" Line="21" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
