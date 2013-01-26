@@ -93,10 +93,10 @@ function AttackPlayer () {
 
 			var angle = Vector3.Angle(targetDirection, forward);
 
-			// Start shooting if close and play is in sight
+			// Start shooting if close and player is in sight
 			/*
 			if (distance < shootRange && angle < shootAngle)
-				yield StartCoroutine("Shoot");
+				yield StartCoroutine("Shoot");	// Maybe run faster instead
 				*/
 		} else {
 			yield StartCoroutine("SearchPlayer", lastVisiblePlayerPosition);
