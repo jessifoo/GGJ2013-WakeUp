@@ -94,8 +94,10 @@ function AttackPlayer () {
 			var angle = Vector3.Angle(targetDirection, forward);
 
 			// Start shooting if close and play is in sight
+			/*
 			if (distance < shootRange && angle < shootAngle)
 				yield StartCoroutine("Shoot");
+				*/
 		} else {
 			yield StartCoroutine("SearchPlayer", lastVisiblePlayerPosition);
 			// Player not visible anymore - stop attacking
@@ -123,7 +125,7 @@ function SearchPlayer (position : Vector3) {
 }
 
 function RotateTowards (position : Vector3) {
-	SendMessage("SetSpeed", 0.0);
+	//SendMessage("SetSpeed", 0.0);
 	
 	var direction = position - transform.position;
 	direction.y = 0;
@@ -139,7 +141,7 @@ function MoveTowards (position : Vector3) {
 	var direction = position - transform.position;
 	direction.y = 0;
 	if (direction.magnitude < 0.5) {
-		SendMessage("SetSpeed", 0.0);
+		//SendMessage("SetSpeed", 0.0);
 		return;
 	}
 	
