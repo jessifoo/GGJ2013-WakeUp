@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 0f9563e17766e49b39a5556b5018f0f7
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: ' 1'
+    100002: _023_building100
+    100004: _023_building400
+    100006: _023_building800
+    100008: base007
+    100010: bounds
+    100012: //RootNode
+    100014: col-01
+    100016: col-04
+    100018: colbox-02
+    100020: colbox-03
+    100022: colbox-05
+    100024: colbox-06
+    100026: collision
+    100028: collision-01
+    100030: collision-02
+    100032: collision-03
+    100034: collision-04
+    100036: collision-05
+    100038: collision-06
+    100040: detail100
+    100042: detail400
+    100044: detail800
+    100046: EnvironmentAmbientLight
+    100048: start007
+    400000: ' 1'
+    400002: _023_building100
+    400004: _023_building400
+    400006: _023_building800
+    400008: base007
+    400010: bounds
+    400012: //RootNode
+    400014: col-01
+    400016: col-04
+    400018: colbox-02
+    400020: colbox-03
+    400022: colbox-05
+    400024: colbox-06
+    400026: collision
+    400028: collision-01
+    400030: collision-02
+    400032: collision-03
+    400034: collision-04
+    400036: collision-05
+    400038: collision-06
+    400040: detail100
+    400042: detail400
+    400044: detail800
+    400046: EnvironmentAmbientLight
+    400048: start007
+    2300000: ' 1'
+    2300002: _023_building100
+    2300004: _023_building400
+    2300006: _023_building800
+    2300008: col-01
+    2300010: col-04
+    2300012: colbox-02
+    2300014: colbox-03
+    2300016: colbox-05
+    2300018: colbox-06
+    3300000: ' 1'
+    3300002: _023_building100
+    3300004: _023_building400
+    3300006: _023_building800
+    3300008: col-01
+    3300010: col-04
+    3300012: colbox-02
+    3300014: colbox-03
+    3300016: colbox-05
+    3300018: colbox-06
+    4300000: col-01
+    4300002: col-04
+    4300004: colbox-02
+    4300006: colbox-05
+    4300008: colbox-03
+    4300010: colbox-06
+    4300012: _023_building100
+    4300014: _023_building400
+    4300016: _023_building800
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 

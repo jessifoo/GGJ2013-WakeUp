@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 25097d8bf561648a4a79e7dd5246a30c
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: ' 1'
+    100002: ' 10'
+    100004: ' 11'
+    100006: ' 12'
+    100008: ' 13'
+    100010: ' 14'
+    100012: ' 15'
+    100014: ' 2'
+    100016: ' 3'
+    100018: ' 4'
+    100020: ' 5'
+    100022: ' 6'
+    100024: ' 7'
+    100026: ' 8'
+    100028: ' 9'
+    100030: base00
+    100032: bounds
+    100034: col-2
+    100036: col-6
+    100038: col-7
+    100040: colbox-1
+    100042: colbox-10
+    100044: colbox-11
+    100046: colbox-12
+    100048: colbox-3
+    100050: colbox-8
+    100052: colbox-8 1
+    100054: colbox-9
+    100056: colbox_4
+    100058: collision-1
+    100060: collision-10
+    100062: collision-11
+    100064: collision-12
+    100066: collision-2
+    100068: collision-3
+    100070: collision-4
+    100072: collision-5
+    100074: collision-6
+    100076: collision-7
+    100078: collision-8
+    100080: collision-9
+    100082: detail100
+    100084: detail300
+    100086: EnvironmentAmbientLight
+    100088: //RootNode
+    100090: foodCart100
+    100092: foodCart500
+    100094: Mesh
+    100096: start00
+    400000: ' 1'
+    400002: ' 10'
+    400004: ' 11'
+    400006: ' 12'
+    400008: ' 13'
+    400010: ' 14'
+    400012: ' 15'
+    400014: ' 2'
+    400016: ' 3'
+    400018: ' 4'
+    400020: ' 5'
+    400022: ' 6'
+    400024: ' 7'
+    400026: ' 8'
+    400028: ' 9'
+    400030: base00
+    400032: bounds
+    400034: col-2
+    400036: col-6
+    400038: col-7
+    400040: colbox-1
+    400042: colbox-10
+    400044: colbox-11
+    400046: colbox-12
+    400048: colbox-3
+    400050: colbox-8
+    400052: colbox-8 1
+    400054: colbox-9
+    400056: colbox_4
+    400058: collision-1
+    400060: collision-10
+    400062: collision-11
+    400064: collision-12
+    400066: collision-2
+    400068: collision-3
+    400070: collision-4
+    400072: collision-5
+    400074: collision-6
+    400076: collision-7
+    400078: collision-8
+    400080: collision-9
+    400082: detail100
+    400084: detail300
+    400086: EnvironmentAmbientLight
+    400088: //RootNode
+    400090: foodCart100
+    400092: foodCart500
+    400094: Mesh
+    400096: start00
+    2300000: ' 1'
+    2300002: ' 10'
+    2300004: ' 11'
+    2300006: ' 12'
+    2300008: ' 13'
+    2300010: ' 14'
+    2300012: ' 15'
+    2300014: ' 2'
+    2300016: ' 3'
+    2300018: ' 4'
+    2300020: ' 5'
+    2300022: ' 6'
+    2300024: ' 7'
+    2300026: ' 8'
+    2300028: ' 9'
+    3300000: ' 1'
+    3300002: ' 10'
+    3300004: ' 11'
+    3300006: ' 12'
+    3300008: ' 13'
+    3300010: ' 14'
+    3300012: ' 15'
+    3300014: ' 2'
+    3300016: ' 3'
+    3300018: ' 4'
+    3300020: ' 5'
+    3300022: ' 6'
+    3300024: ' 7'
+    3300026: ' 8'
+    3300028: ' 9'
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
