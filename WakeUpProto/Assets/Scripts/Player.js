@@ -1,7 +1,7 @@
 var maximumHitPoints = 100.0;
 var hitPoints = 100.0;
 
-
+// private vars for the different weapons
 private var bareHand : BareHand;
 
 function Awake () {
