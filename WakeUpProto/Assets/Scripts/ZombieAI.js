@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var hitPoints = 100.0;
 var walkSpeed = 0.2;
 var followSpeed = 0.4;
