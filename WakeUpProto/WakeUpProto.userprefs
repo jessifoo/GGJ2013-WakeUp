@@ -1,6 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ActiveRuntime="Mono 2.10.5" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.js">
+    <Files>
+      <File FileName="../../Desktop/Heartbeat.js" Line="10" Column="4" />
+      <File FileName="Assets/Scripts/Maze.js" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Image Effects (Pro Only)/AntialiasingAsPostEffect.js" Line="81" Column="1" />
+      <File FileName="Assets/Scripts/Player.js" Line="2" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
