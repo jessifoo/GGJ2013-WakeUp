@@ -8,6 +8,7 @@ var deathOn : boolean;
 
 var DELAYED_START : float = 2.0;
 
+
 private var deltaHeartRate : float;
 
 // Player attributes
@@ -65,6 +66,7 @@ function FixedUpdate () {
 	deltaHeartRate = Mathf.Tan((playerSpeed / (maxSpeed/2)) - 1) * Time.fixedDeltaTime * 10;
 	if (heartRate <= 10) {
 		deltaHeartRate /= 10;
+		ApplyDamage(0.1);
 	}
 	if (DELAYED_START > 0) {
 		DELAYED_START -= Time.fixedDeltaTime;
@@ -74,12 +76,11 @@ function FixedUpdate () {
 	
 	if ( heartRate <= MIN_HEARTBEATS ) {
 		heartRate = MIN_HEARTBEATS;
-		Die();
 	}	
 	if ( heartRate >= MAX_HEARTBEATS )
 		heartRate = MAX_HEARTBEATS;
 	
-	vignette.intensity = (100 - heartRate) / 5;
+	vignette.intensity = (100 - heartRate) / 10;
 }
 
 function ApplyDamage (damage : float) {
@@ -127,9 +128,11 @@ function Die () {
 
 //Debug - draw the heartbeat on the gui
 function OnGUI () {
-	GUI.TextArea(new Rect(10, 10, 30, 20), "" + heartRate);
-	GUI.TextArea(new Rect(40, 10, 80, 20), "" + playerSpeed);
-	GUI.TextArea(new Rect(120, 10, 80, 20), "" + deltaHeartRate);
+	GUI.TextArea(new Rect(10, 10, 130, 20), "Heart Rate: " + Mathf.Floor(heartRate));
+	GUI.TextArea(new Rect(10, 30, 100, 20), "Health: " + Mathf.Floor(hitPoints));
+	
+	GUI.TextArea(new Rect(40, 50, 80, 20), "" + playerSpeed);
+	GUI.TextArea(new Rect(120, 50, 80, 20), "" + deltaHeartRate);
 }
 
 

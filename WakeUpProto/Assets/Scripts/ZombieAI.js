@@ -1,17 +1,22 @@
 var hitPoints = 100.0;
-var walkSpeed = 0.2;
+var attackDamage = 10.0;
+var walkSpeed = 0.1;
 var followSpeed = 0.4;
-var chaseSpeed = 1.0;
+var chaseSpeed = 0.8;
 var rotationSpeed = 5.0;
-var chaseRange = 15.0;
-var followRange = 30.0;
-var shootAngle = 4.0;
-var dontComeCloserRange = 5.0;
+var chaseRange = 10.0;
+var followRange = 18.0;
+var dontComeCloserRange = 2.0;
 var pickNextWaypointDistance = 2.0;
+var timeout = 3.0;
 var dieSound : AudioClip;
+var shootAngle = 4.0;
 
 private var curSpeed = walkSpeed;
 private var target : Transform;
+private var player : GameObject;
+private var playerScript : Component;
+private var playerHeartRate : float;
 
 var animator : Animator;
 
@@ -20,10 +25,23 @@ function Start () {
 	animator.SetInteger("attackIndex", 0);
 
 	// Auto setup player as target through tags
-	if (target == null && GameObject.FindWithTag("Player"))
-		target = GameObject.FindWithTag("Player").transform;
-
+	if (target == null && GameObject.FindWithTag("Player")) {
+		player = GameObject.FindWithTag("Player");
+		playerScript = player.GetComponent(Player);
+		target = player.transform;
+	}
 	Patrol(); 
+}
+
+function FixedUpdate() {
+	playerHeartRate = playerScript.heartRate;
+	// TODO : update zombie attributes based on current heart rate
+	var heartRateMultiplier = (2 * playerHeartRate / playerScript.MAX_HEARTBEATS) + 0.1;	//goes between 0.1 and 2.1
+	curSpeed = Mathf.Clamp01(curSpeed * heartRateMultiplier);	// do heart rate speed adjust here and make sure its between 0 and 1
+	animator.SetFloat("moveSpeed", curSpeed);
+	
+	//chaseRange *= heartRateMultiplier;	// zombie seems to act weird changing theses
+	//followRange *= heartRateMultiplier;	// feel free to try adjusting
 }
 
 
@@ -46,6 +64,11 @@ function Patrol () {
 		
 		yield;
 	}
+}
+
+function Attack() {
+	animator.SetBool("bAttack", true);
+	player.SendMessage("ApplyDamage", attackDamage);
 }
 
 function ApplyDamage (damage : float) {
@@ -93,7 +116,7 @@ function FollowPlayer () {
 				MoveTowards (lastVisiblePlayerPosition);
 			} else {
 				RotateTowards(lastVisiblePlayerPosition);
-				animator.SetBool("bAttack", true);
+				Attack();
 			}
 
 			var forward = transform.TransformDirection(Vector3.forward);
@@ -105,7 +128,8 @@ function FollowPlayer () {
 			// Start running if close and player is in sight
 			if (distance < chaseRange && angle < shootAngle)
 				curSpeed = chaseSpeed;
-				//yield StartCoroutine("Chase");	// Maybe run faster instead
+			else
+				curSpeed = followSpeed;
 				
 		} else {
 			yield StartCoroutine("SearchPlayer", lastVisiblePlayerPosition);
@@ -120,7 +144,7 @@ function FollowPlayer () {
 
 function SearchPlayer (position : Vector3) {
 	// Run towards the player but after 3 seconds timeout and go back to Patroling
-	var timeout = 3.0;
+	
 	curSpeed = followSpeed;
 	while (timeout > 0.0) {
 		MoveTowards(position);
@@ -167,12 +191,7 @@ function MoveTowards (position : Vector3) {
 	
 	// Move the character
 	direction = forward * curSpeed * speedModifier;
-	
-	
 	GetComponent (CharacterController).SimpleMove(direction);
-	
-	//SendMessage("SetSpeed", speed * speedModifier, SendMessageOptions.DontRequireReceiver);
-	animator.SetFloat("moveSpeed", curSpeed);
 }
 
 function PickNextWaypoint (currentWaypoint : AutoWayPoint) {
