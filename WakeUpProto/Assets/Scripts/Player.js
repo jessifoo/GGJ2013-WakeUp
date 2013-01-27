@@ -133,6 +133,12 @@ function OnGUI () {
 	
 	//GUI.TextArea(new Rect(40, 50, 80, 20), "" + playerSpeed);
 	//GUI.TextArea(new Rect(120, 50, 80, 20), "" + deltaHeartRate);
+	
+	if (GUI.Button(Rect(20,Screen.height-40,100,30),"Quit Game")){
+      LevelLoadFade.FadeAndLoadLevel("Start", Color.white, 2.0);
+     } 
 }
+
+
 
 
