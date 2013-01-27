@@ -164,10 +164,12 @@ function MoveTowards (position : Vector3) {
 	var forward = transform.TransformDirection(Vector3.forward);
 	var speedModifier = Vector3.Dot(forward, direction.normalized);
 	speedModifier = Mathf.Clamp01(speedModifier);
-
+	
 	// Move the character
 	direction = forward * curSpeed * speedModifier;
-	//GetComponent (CharacterController).SimpleMove(direction);
+	
+	
+	GetComponent (CharacterController).SimpleMove(direction);
 	
 	//SendMessage("SetSpeed", speed * speedModifier, SendMessageOptions.DontRequireReceiver);
 	animator.SetFloat("moveSpeed", curSpeed);
