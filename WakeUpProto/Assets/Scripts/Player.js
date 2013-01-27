@@ -37,10 +37,28 @@ function Awake () {
 	
 	currentLevel = Application.loadedLevel;
 	
+	playerMaxSpeedWalking = playerMovement.maxForwardSpeed;
 }
 
 // For Heart Rate
+private var playerMaxSpeedWalking : float;
+var playerMaxSpeedRunning : float;
 function FixedUpdate () { 
+	//Controls added on:
+	if ( Input.GetKey(KeyCode.LeftShift) ) {
+		playerMovement.maxForwardSpeed   = playerMaxSpeedRunning;
+		playerMovement.maxBackwardsSpeed = playerMaxSpeedRunning;
+		playerMovement.maxSidewaysSpeed  = playerMaxSpeedRunning;
+		maxSpeed = playerMaxSpeedRunning;
+	} else {
+		playerMovement.maxForwardSpeed  = playerMaxSpeedWalking;
+		playerMovement.maxBackwardsSpeed = playerMaxSpeedWalking;
+		playerMovement.maxSidewaysSpeed  = playerMaxSpeedWalking;
+		maxSpeed = playerMaxSpeedWalking;
+	}
+	
+	
+	//Speed info:
 	playerSpeed = playerMovement.velocity.magnitude;
 	
 	// Hacky, ccould be improved.
