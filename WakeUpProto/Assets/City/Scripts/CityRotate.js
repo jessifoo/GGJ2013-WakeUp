@@ -44,6 +44,7 @@ function Update() {
 				rb = rigidbodys[i];
 				rb.useGravity = true;
 			}
+			physObjects.transform.position.y += 0.1;
 			enableRigidBodies = false;
 		}
 	}
