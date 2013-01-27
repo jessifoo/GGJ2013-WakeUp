@@ -196,7 +196,7 @@ function PickNextWaypoint (currentWaypoint : AutoWayPoint) {
 	
 	return best;
 }
-=======
+
 var hitPoints = 100.0;
 var walkSpeed = 0.2;
 var followSpeed = 0.4;
@@ -400,4 +400,4 @@ function OnCollisionEnter(collision : Collision){
 		Debug.Log("Colliding with zombie");	
 	}
 }
->>>>>>> Instructions, credits, filled out
+
