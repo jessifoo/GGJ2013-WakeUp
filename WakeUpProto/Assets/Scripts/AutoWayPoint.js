@@ -31,6 +31,7 @@ function Awake () {
 // Draw the waypoint pickable gizmo
 function OnDrawGizmos () {
 	Gizmos.DrawIcon (transform.position, "Waypoint.tif");
+	OnDrawGizmosSelected();
 }
 
 // Draw the waypoint lines only when you select one of the waypoints
@@ -51,6 +52,7 @@ function OnDrawGizmosSelected () {
 function RebuildWaypointList () {
 	var objects : Object[] = FindObjectsOfType(AutoWayPoint);
 	waypoints = Array(objects);
+	Debug.Log("Rebuilding waypointlist across "+waypoints.length);
 	
 	for (var point : AutoWayPoint in waypoints) {
 		point.RecalculateConnectedWaypoints();
@@ -68,6 +70,7 @@ function RecalculateConnectedWaypoints ()
 		
 		// Do we have a clear line of sight?
 		if (!Physics.CheckCapsule(transform.position, other.transform.position, kLineOfSightCapsuleRadius)) {
+			Debug.Log("Found a connection!");
 			connected.Add(other);
 		}
 	}	
