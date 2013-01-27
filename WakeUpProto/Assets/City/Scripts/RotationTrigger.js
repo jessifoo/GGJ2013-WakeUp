@@ -1,7 +1,9 @@
 #pragma strict
 
-function Start () {
 
+var endGameLight : GameObject;
+function Start () {
+	endGameLight.active = false;
 }
 
 function Update () {
@@ -13,6 +15,7 @@ var rotationGameObject : GameObject;
 function OnTriggerEnter(other:Collider) {
 	if ( other.gameObject.tag == "Player" ) {
 		rotationGameObject.BroadcastMessage("Begin");
+		endGameLight.active = true;
 		Destroy(gameObject);
 	}
 }
