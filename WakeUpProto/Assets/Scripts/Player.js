@@ -1,12 +1,62 @@
 var maximumHitPoints = 100.0;
 var hitPoints = 100.0;
 
+var heartRate : float = 100.0;
+var MAX_HEARTBEATS : float = 100.0;
+var MIN_HEARTBEATS : float = 0.0;
+
+var DELAYED_START : float = 2.0;
+
+private var deltaHeartRate : float;
+
+// Player attributes
+private var player : GameObject;
+private var playerMovement : CharacterMotorMovement;
+private var playerSpeed : float;
+private var maxSpeed : float;
+
+// Visual Effect
+private var vignette : Vignetting;
+
 // private vars for the different weapons
 private var bareHand : BareHand;
 
 function Awake () {
+	// Weapons
 	bareHand = GetComponentInChildren(BareHand);
 	
+	// Player values
+	player = GameObject.FindGameObjectWithTag("Player");
+	playerMovement = player.GetComponentInChildren(CharacterMotor).movement;
+	maxSpeed = player.GetComponent(CharacterMotor).movement.maxForwardSpeed;
+	
+	vignette = player.GetComponentInChildren(Vignetting);
+	vignette.blurSpread = 10;
+}
+
+// For Heart Rate
+function FixedUpdate () { 
+	playerSpeed = playerMovement.velocity.magnitude;
+	
+	// Hacky, ccould be improved.
+	deltaHeartRate = Mathf.Tan((playerSpeed / (maxSpeed/2)) - 1) * Time.fixedDeltaTime * 10;
+	if (heartRate <= 10) {
+		deltaHeartRate /= 10;
+	}
+	if (DELAYED_START > 0) {
+		DELAYED_START -= Time.fixedDeltaTime;
+	} else {
+		heartRate += deltaHeartRate;
+	}
+	
+	if ( heartRate <= MIN_HEARTBEATS ) {
+		heartRate = MIN_HEARTBEATS;
+		Die();
+	}	
+	if ( heartRate >= MAX_HEARTBEATS )
+		heartRate = MAX_HEARTBEATS;
+	
+	vignette.intensity = (100 - heartRate) / 5;
 }
 
 function ApplyDamage (damage : float) {
@@ -15,6 +65,7 @@ function ApplyDamage (damage : float) {
 
 	// Apply damage
 	hitPoints -= damage;
+	//vignette.
 
 	// Play pain sound when getting hit - but don't play so often
 	/*
@@ -49,4 +100,11 @@ function Die () {
 	}
 	
 	LevelLoadFade.FadeAndLoadLevel(Application.loadedLevel, Color.white, 2.0);
+}
+
+//Debug - draw the heartbeat on the gui
+function OnGUI () {
+	GUI.TextArea(new Rect(10, 10, 30, 20), "" + heartRate);
+	GUI.TextArea(new Rect(40, 10, 80, 20), "" + playerSpeed);
+	GUI.TextArea(new Rect(120, 10, 80, 20), "" + deltaHeartRate);
 }
