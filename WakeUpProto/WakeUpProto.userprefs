@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Image Effects (Pro Only)/AntialiasingAsPostEffect.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.js">
     <Files>
-      <File FileName="Assets/Standard Assets/Image Effects (Pro Only)/AntialiasingAsPostEffect.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Maze.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.js" Line="35" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
