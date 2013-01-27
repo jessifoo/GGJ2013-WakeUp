@@ -1,23 +1,26 @@
 
 function Start () {
 	// Select the first weapon
-	SelectWeapon(0);
+	//SelectWeapon(0);
+	for (var i=0; i<transform.childcount; i++) {
+		transform.GetChild(1).gameObject.SetActive(true);
+	}
 }
 
 function Update () {
 	// Did the user press fire?
-	if (Input.GetButton ("Fire1")) {
+	if (Input.GetButton ("Fire1") || Input.GetButton("Fire2")) {
 		BroadcastMessage("Fire");
 	}
-	
+	/*
 	if (Input.GetKeyDown("1")) {
 		SelectWeapon(0);
 	}	
 	else if (Input.GetKeyDown("2")) {
 		SelectWeapon(1);
-	}	
+	}	*/
 }
-
+/*
 function SelectWeapon (index : int) {
 	for (var i=0;i<transform.childCount;i++)	{
 		// Activate the selected weapon
@@ -28,4 +31,4 @@ function SelectWeapon (index : int) {
 		else
 			transform.GetChild(i).gameObject.SetActive(false);//Recursively(false); 
 	}
-}
+} */

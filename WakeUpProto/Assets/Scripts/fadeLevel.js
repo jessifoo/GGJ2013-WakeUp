@@ -12,9 +12,7 @@ function Update () {
 }
 
 function OnTriggerEnter(other : Collider) {
-	if(currentLevel == 1){
-		nextLevel = 2;
-	}else if(currentLevel == 2){
+	if(currentLevel == 2){
 		nextLevel = 3;
 	}else if(currentLevel == 3){
 		nextLevel = 4;
@@ -22,6 +20,10 @@ function OnTriggerEnter(other : Collider) {
 		nextLevel = 5;
 	}else if(currentLevel == 5){
 		nextLevel = 6;
+	}else if(currentLevel == 6){
+		nextLevel = 7;
+	}else if(currentLevel == 7){
+		nextLevel = 8;
 	}
 
 	if(other.gameObject.tag == "Player"){
