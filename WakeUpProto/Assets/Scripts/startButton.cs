@@ -14,6 +14,6 @@ public class startButton : MonoBehaviour {
 	}
 	
 	void OnClick() {
-		Application.LoadLevel ("Proto1");
+		Application.LoadLevel ("Graveyard");
 	}
 }

@@ -4,6 +4,7 @@ var hitPoints = 100.0;
 var heartRate : float = 100.0;
 var MAX_HEARTBEATS : float = 100.0;
 var MIN_HEARTBEATS : float = 0.0;
+var deathOn : boolean;
 
 var DELAYED_START : float = 2.0;
 
@@ -14,6 +15,7 @@ private var player : GameObject;
 private var playerMovement : CharacterMotorMovement;
 private var playerSpeed : float;
 private var maxSpeed : float;
+private var currentLevel : int;
 
 // Visual Effect
 private var vignette : Vignetting;
@@ -32,6 +34,9 @@ function Awake () {
 	
 	vignette = player.GetComponentInChildren(Vignetting);
 	vignette.blurSpread = 10;
+	
+	currentLevel = Application.loadedLevel;
+	
 }
 
 // For Heart Rate
@@ -82,7 +87,7 @@ function ApplyDamage (damage : float) {
 	} */
 
 	// Are we dead?
-	if (hitPoints < 0.0)
+	if (hitPoints < 0.0 && deathOn)
 		Die();
 }
 
@@ -108,3 +113,5 @@ function OnGUI () {
 	GUI.TextArea(new Rect(40, 10, 80, 20), "" + playerSpeed);
 	GUI.TextArea(new Rect(120, 10, 80, 20), "" + deltaHeartRate);
 }
+
+
