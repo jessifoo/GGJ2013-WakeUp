@@ -1,12 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Credits.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ZombieAI.js">
     <Files>
-      <File FileName="Assets/Scripts/ZombieAI.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ZombieAI.js" Line="86" Column="27" />
+      <File FileName="Assets/Scripts/Player.js" Line="71" Column="17" />
       <File FileName="Assets/Scripts/PlayerWeapons.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Instructions.js" Line="25" Column="1" />
-      <File FileName="Assets/Scripts/Credits.js" Line="14" Column="5" />
+      <File FileName="Assets/Scripts/Instructions.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Credits.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

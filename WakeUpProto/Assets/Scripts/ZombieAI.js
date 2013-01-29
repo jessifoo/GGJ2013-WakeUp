@@ -12,6 +12,7 @@ var timeout = 3.0;
 var dieSound : AudioClip;
 var shootAngle = 4.0;
 
+private var dead = false;
 private var curSpeed = walkSpeed;
 private var target : Transform;
 private var player : GameObject;
@@ -47,7 +48,7 @@ function FixedUpdate() {
 
 function Patrol () {
 	var curWayPoint = AutoWayPoint.FindClosest(transform.position);
-	while (true) {
+	while (!dead) {
 		var waypointPosition = curWayPoint.transform.position;
 		// Are we close to a waypoint? -> pick the next one!
 		if (Vector3.Distance(waypointPosition, transform.position) < pickNextWaypointDistance)
@@ -79,8 +80,13 @@ function ApplyDamage (damage : float) {
 	hitPoints -= damage;
 	Debug.Log("I (enemy) was hit: " + hitPoints);
 	if (hitPoints <= 0.0) {
-		animator.SetBool("bDeath", true);
+		Die();
 	}
+}
+
+function Die() {
+	animator.SetBool("bDeath", true);
+	dead = true;
 }
 
 function CanSeeTarget () : boolean {
@@ -94,12 +100,10 @@ function CanSeeTarget () : boolean {
 	return false;
 }
 
-
-
 function FollowPlayer () {
 	var lastVisiblePlayerPosition = target.position;
 	curSpeed = followSpeed;
-	while (true) {
+	while (!dead) {
 		if (CanSeeTarget ()) {
 			// Target is dead - stop hunting
 			if (target == null)
