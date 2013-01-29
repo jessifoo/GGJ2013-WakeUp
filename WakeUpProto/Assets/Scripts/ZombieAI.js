@@ -92,7 +92,7 @@ function Die() {
 }
 
 function PlayDeathSound() {
-	var index : int = Random.Range(0, deathSounds.length);
+	var index : int = Random.Range(0, deathSounds.length-1);
 	var clip : AudioClip = deathSounds[index];
 	audio.PlayOneShot(clip, 0.75);
 }
