@@ -1,7 +1,7 @@
-var range = 2.0;
-var fireRate = 0.5;
-var force = 10.0;
-var damage = 5.0;
+var range : float;
+var fireRate : float;
+var force : float;
+var damage : float;
 private var hitParticles : ParticleEmitter;
 
 private var nextFireTime = 0.0;
@@ -26,13 +26,11 @@ function Fire () {
 		FireOneShot();
 		nextFireTime += fireRate;
 	} 
-	FireOneShot();
 }
 
 function FireOneShot () {
 	var direction = transform.TransformDirection(Vector3.forward);
 	var hit : RaycastHit;
-	
 	
 	// Did we hit anything?
 	if (Physics.Raycast (transform.position, direction, hit, range)) {
@@ -55,11 +53,8 @@ function FireOneShot () {
 		hit.collider.SendMessage("ApplyDamage", damage, SendMessageOptions.DontRequireReceiver);
 	}
 	
-
 	// Register that we shot this frame,
 	// so that the LateUpdate function enabled the muzzleflash renderer for one frame
 	m_LastFrameShot = Time.frameCount;
-	enabled = true;
-	
-			
+	enabled = true;	
 }

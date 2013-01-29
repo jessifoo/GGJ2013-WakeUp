@@ -8,6 +8,7 @@ function OnTriggerEnter(other : Collider) {
 
 var loop : boolean = false;
 private var played : boolean = false;
+
 //Play a clip
 function PlayClip ( clip : AudioClip ) : void {
 if ( !played ) {

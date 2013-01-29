@@ -9,8 +9,9 @@ var followRange = 18.0;
 var dontComeCloserRange = 2.0;
 var pickNextWaypointDistance = 2.0;
 var timeout = 3.0;
-var dieSound : AudioClip;
+var deathSounds : AudioClip[];
 var shootAngle = 4.0;
+var attack0Sound : AudioClip;
 
 private var dead = false;
 private var curSpeed = walkSpeed;
@@ -19,7 +20,7 @@ private var player : GameObject;
 private var playerScript : Component;
 private var playerHeartRate : float;
 
-var animator : Animator;
+private var animator : Animator;
 
 function Start () {
 	animator = GetComponent("Animator");
@@ -78,7 +79,7 @@ function ApplyDamage (damage : float) {
 		return;
 
 	hitPoints -= damage;
-	Debug.Log("I (enemy) was hit: " + hitPoints);
+	Debug.Log("Zombie was hit: " + hitPoints);
 	if (hitPoints <= 0.0) {
 		Die();
 	}
@@ -87,6 +88,13 @@ function ApplyDamage (damage : float) {
 function Die() {
 	animator.SetBool("bDeath", true);
 	dead = true;
+	PlayDeathSound();
+}
+
+function PlayDeathSound() {
+	var index : int = Random.Range(0, deathSounds.length);
+	var clip : AudioClip = deathSounds[index];
+	audio.PlayOneShot(clip, 0.75);
 }
 
 function CanSeeTarget () : boolean {
@@ -179,7 +187,6 @@ function MoveTowards (position : Vector3) {
 	var direction = position - transform.position;
 	direction.y = 0;
 	if (direction.magnitude < 0.5) {
-		//SendMessage("SetSpeed", 0.0);
 		animator.SetFloat("moveSpeed", 0.0);
 		return;
 	}

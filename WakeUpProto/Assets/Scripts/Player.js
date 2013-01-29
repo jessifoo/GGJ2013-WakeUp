@@ -21,13 +21,9 @@ private var currentLevel : int;
 // Visual Effect
 private var vignette : Vignetting;
 
-// private vars for the different weapons
-private var bareHand : BareHand;
 
 function Awake () {
 	Screen.lockCursor = true;
-	// Weapons
-	bareHand = GetComponentInChildren(BareHand);
 	
 	// Player values
 	player = GameObject.FindGameObjectWithTag("Player");
@@ -67,7 +63,7 @@ function FixedUpdate () {
 	
 	// Hacky, ccould be improved.
 	deltaHeartRate = Mathf.Tan((playerSpeed / (maxSpeed/2)) - 1) * Time.fixedDeltaTime * 10;
-	if (heartRate <= 10) {
+	if (heartRate <= 10 && deltaHeartRate <= 0) {
 		deltaHeartRate /= 10;
 		ApplyDamage(0.1);
 	}
@@ -114,6 +110,7 @@ function ApplyDamage (damage : float) {
 }
 
 function Die () {
+	hitPoints = 0.0;
 	/*
 	if (die)
 		AudioSource.PlayClipAtPoint(die, transform.position);
