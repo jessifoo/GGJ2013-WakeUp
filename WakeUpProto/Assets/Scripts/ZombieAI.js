@@ -1,5 +1,6 @@
 var hitPoints = 100.0;
-var attackDamage = 10.0;
+var attackDamage : float;
+var attackRate = 0.5;
 var walkSpeed = 0.1;
 var followSpeed = 0.4;
 var chaseSpeed = 0.8;
@@ -19,6 +20,7 @@ private var target : Transform;
 private var player : GameObject;
 private var playerScript : Component;
 private var playerHeartRate : float;
+private var nextFireTime = 0.0;
 
 private var animator : Animator;
 
@@ -70,6 +72,19 @@ function Patrol () {
 
 function Attack() {
 	animator.SetBool("bAttack", true);
+	AttackOnce();
+	/*
+	if (Time.time - attackRate > nextFireTime)
+		nextFireTime = Time.time - Time.deltaTime;
+	
+	// Keep firing until we used up the fire time
+	while( nextFireTime < Time.time) {
+		AttackOnce();
+		nextFireTime += attackRate;
+	} */
+}
+
+function AttackOnce() {
 	player.SendMessage("ApplyDamage", attackDamage);
 }
 

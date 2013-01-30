@@ -88,7 +88,7 @@ function ApplyDamage (damage : float) {
 
 	// Apply damage
 	hitPoints -= damage;
-	//vignette.
+	print("player health: " + hitPoints);
 
 	// Play pain sound when getting hit - but don't play so often
 	/*
