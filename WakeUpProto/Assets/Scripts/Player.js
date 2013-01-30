@@ -128,7 +128,7 @@ function Die () {
 
 //Debug - draw the heartbeat on the gui
 function OnGUI () {
-	GUI.TextArea(new Rect(10, 10, 130, 20), "Heart Rate: " + Mathf.Floor(heartRate));
+	GUI.TextArea(new Rect(10, 10, 100, 20), "Heart Rate: " + Mathf.Floor(heartRate));
 	GUI.TextArea(new Rect(10, 30, 100, 20), "Health: " + Mathf.Floor(hitPoints));
 	
 	//GUI.TextArea(new Rect(40, 50, 80, 20), "" + playerSpeed);
