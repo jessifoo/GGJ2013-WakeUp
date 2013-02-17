@@ -46,6 +46,10 @@ function FixedUpdate() {
 	
 	//chaseRange *= heartRateMultiplier;	// zombie seems to act weird changing theses
 	//followRange *= heartRateMultiplier;	// feel free to try adjusting
+	if (dead) {
+		var cc : CharacterController = GetComponent("CharacterController") as CharacterController;
+		cc.enabled = false;
+	}
 }
 
 
@@ -104,6 +108,8 @@ function Die() {
 	animator.SetBool("bDeath", true);
 	dead = true;
 	PlayDeathSound();
+	//var cc = GetComponent("CharacterController");
+	
 }
 
 function PlayDeathSound() {
