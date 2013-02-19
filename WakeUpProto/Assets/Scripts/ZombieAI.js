@@ -12,7 +12,8 @@ var pickNextWaypointDistance = 2.0;
 var timeout = 3.0;
 var deathSounds : AudioClip[];
 var shootAngle = 4.0;
-var attack0Sound : AudioClip;
+var attackSounds : AudioClip[];
+
 
 private var dead = false;
 private var curSpeed = walkSpeed;
@@ -20,7 +21,7 @@ private var target : Transform;
 private var player : GameObject;
 private var playerScript : Component;
 private var playerHeartRate : float;
-private var nextFireTime = 0.0;
+private var nextFireTime : float = 0.0;
 
 private var animator : Animator;
 
@@ -76,8 +77,8 @@ function Patrol () {
 
 function Attack() {
 	animator.SetBool("bAttack", true);
-	AttackOnce();
-	/*
+	//AttackOnce();
+	
 	if (Time.time - attackRate > nextFireTime)
 		nextFireTime = Time.time - Time.deltaTime;
 	
@@ -85,10 +86,18 @@ function Attack() {
 	while( nextFireTime < Time.time) {
 		AttackOnce();
 		nextFireTime += attackRate;
-	} */
+	} 
 }
 
+var playAttackSound : boolean = true;
 function AttackOnce() {
+	Debug.Log(Time.time);
+	if (playAttackSound) {
+		PlayAttackSound();
+		playAttackSound = false;
+	} else {
+		playAttackSound = true;
+	}
 	player.SendMessage("ApplyDamage", attackDamage);
 }
 
@@ -110,6 +119,12 @@ function Die() {
 	PlayDeathSound();
 	//var cc = GetComponent("CharacterController");
 	
+}
+
+function PlayAttackSound() {
+	var index : int = Random.Range(0, attackSounds.length-1);
+	var clip : AudioClip = attackSounds[index];
+	audio.PlayOneShot(clip, 0.75);
 }
 
 function PlayDeathSound() {
@@ -137,12 +152,10 @@ function FollowPlayer () {
 			// Target is dead - stop hunting
 			if (target == null)
 				return;
-
 			// Target is too far away - give up	
 			var distance = Vector3.Distance(transform.position, target.position);
 			if (distance > chaseRange * 3)
 				return;
-			
 			lastVisiblePlayerPosition = target.position;
 			if (distance > dontComeCloserRange) {
 				animator.SetBool("bAttack", false);
@@ -151,19 +164,15 @@ function FollowPlayer () {
 				RotateTowards(lastVisiblePlayerPosition);
 				Attack();
 			}
-
 			var forward = transform.TransformDirection(Vector3.forward);
 			var targetDirection = lastVisiblePlayerPosition - transform.position;
 			targetDirection.y = 0;
-
 			var angle = Vector3.Angle(targetDirection, forward);
-
 			// Start running if close and player is in sight
 			if (distance < chaseRange && angle < shootAngle)
 				curSpeed = chaseSpeed;
 			else
-				curSpeed = followSpeed;
-				
+				curSpeed = followSpeed;	
 		} else {
 			yield StartCoroutine("SearchPlayer", lastVisiblePlayerPosition);
 			// Player not visible anymore - stop attacking
@@ -181,9 +190,7 @@ function SearchPlayer (position : Vector3) {
 	curSpeed = followSpeed;
 	while (timeout > 0.0) {
 		MoveTowards(position);
-
-		// We found the player
-		if (CanSeeTarget ())
+		if (CanSeeTarget ())	// We found the player
 			return;
 
 		timeout -= Time.deltaTime;

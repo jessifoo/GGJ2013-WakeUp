@@ -20,7 +20,7 @@ private var currentLevel : int;
 
 // Visual Effect
 private var vignette : Vignetting;
-
+var vignetteScale : float;
 
 function Awake () {
 	Screen.lockCursor = true;
@@ -65,12 +65,12 @@ function FixedUpdate () {
 	deltaHeartRate = Mathf.Tan((playerSpeed / (maxSpeed/2)) - 1) * Time.fixedDeltaTime * 10;
 	if (heartRate <= 10 && deltaHeartRate <= 0) {
 		deltaHeartRate /= 10;
-		ApplyDamage(0.1);
+		//ApplyDamage(0.1);
 	}
 	if (DELAYED_START > 0) {
 		DELAYED_START -= Time.fixedDeltaTime;
 	} else {
-		heartRate += deltaHeartRate;
+		heartRate += deltaHeartRate/2;
 	}
 	
 	if ( heartRate <= MIN_HEARTBEATS ) {
@@ -79,7 +79,7 @@ function FixedUpdate () {
 	if ( heartRate >= MAX_HEARTBEATS )
 		heartRate = MAX_HEARTBEATS;
 	
-	vignette.intensity = (100 - heartRate) / 10;
+	vignette.intensity = (100 - heartRate) * vignetteScale;
 }
 
 function ApplyDamage (damage : float) {
@@ -128,7 +128,8 @@ function Die () {
 
 //Debug - draw the heartbeat on the gui
 function OnGUI () {
-	GUI.TextArea(new Rect(10, 10, 100, 20), "Heart Rate: " + Mathf.Floor(heartRate));
+	var scaledHeartRate : float = Mathf.Floor(heartRate) + 60.0f;
+	GUI.TextArea(new Rect(10, 10, 100, 20), "Heart Rate: " + scaledHeartRate);
 	GUI.TextArea(new Rect(10, 30, 100, 20), "Health: " + Mathf.Floor(hitPoints));
 	
 	//GUI.TextArea(new Rect(40, 50, 80, 20), "" + playerSpeed);
@@ -148,6 +149,9 @@ function CheckMouseLocking() {
     if (Input.GetKeyDown ("escape")) {	// Currently only locks the cursor
         Screen.lockCursor = false;
     }
+    if (Input.GetKeyDown ("l")) {	// Currently only locks the cursor
+        Screen.lockCursor = true;
+    }
     
     // Did we lose cursor locking?
     // eg. because the user pressed escape
@@ -164,15 +168,9 @@ function CheckMouseLocking() {
     }
 }
 
-function OnMouseDown () {
-    // Lock the cursor
-    Screen.lockCursor = true;
-}
-
 // Called when the cursor is actually being locked
 function DidLockCursor () {
     Debug.Log("Locking cursor");
-
 }
 
 // Called when the cursor is being unlocked
